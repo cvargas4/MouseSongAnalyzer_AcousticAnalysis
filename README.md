@@ -43,12 +43,12 @@ This will then take the .csv file, remove 'Unclassified' USVs, convert USVs with
 |           uu           |          M         |
 |          udu           |          M         |
 
-<br/><br/>
+
 ### Output
 Script will create a folder named `MSAUSVAnalysis` with four .csv files.
 *Features.csv*, *TransitionProbs_Overall.csv*, *TransitionProbs_Conditional.csv*
 <br/><br/>
-<br/><br/>
+
 ## Resources and References
 Please see [MouseSongAnalyzer](https://github.com/cvargas4/MouseSongAnalyzer) to process .wav files of mouse USVs. This analysis will generate the file (ending in `Syllables.csv`) used by the script here.
 
