@@ -1,5 +1,5 @@
 # MouseSongAnalyzer_AcousticAnalysis
-Post-processing script for analyzing the Syllables.csv output from Mouse Song Analyzer used to analyzed mouse Ultrasonic Vocalizations (USVs).
+Post-processing script for analyzing the Syllables.csv output from [Mouse Song Analyzer](https://github.com/cvargas4/MouseSongAnalyzer) used to analyzed mouse Ultrasonic Vocalizations (USVs).
 
 
 ## Set up and Running
