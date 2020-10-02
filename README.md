@@ -4,10 +4,11 @@ Post-processing script for analyzing the Syllables.csv output from [Mouse Song A
 
 ## Set up and Running
 
-The only dependancy is numpy
-
+The only dependencies are numpy and scipy
+Scipy is used to smooth one plot, can be skipped if desired.
 `
-pip install numpy
+pip install numpy matplotlib  scipy
+
 `
 <br/><br/>
 <br/><br/>
