@@ -33,7 +33,7 @@ For the notebook, simply run the cell.
   Name of .csv file to analyze: Syllables.csv
 `
 <br/><br/>
-This will then take the .csv file, remove 'Unclassified' USVs, convert USVs with multiple jumps into 'M' type syllables (see table below for examples), and calculate means of acoustic features.
+This will then take the .csv file, remove 'notIDd' USVs, convert USVs with multiple jumps into 'M' type syllables (see table below for examples), and calculate means of acoustic features.
 | Original Syllable Jumps| Converted Syllables| 
 | -----------------------|:------------------:| 
 |            s           |          s         |
@@ -57,6 +57,6 @@ This `AcousticAnalysis_MSA.py` python script replaces the`Acoustic_Analysis_Guid
 
 Please see those references for in-depth explanation of the transition and conditional probability calculations.
 <br/><br/>
-This python script was based on the above work by Jonathan Chabout, PhD, and written by Jannatul Ahmed (undergraduate student) and César Vargas (graduate student). 
+This python script was based on the above work by Jonathan Chabout, PhD, and written by Jannatul Ahmed (undergraduate student, Macauley Honors College at Hunter College) and César Vargas (graduate student, Rockefeller Unviersity). 
 
 This is research code. Please contact César for quesitons.
