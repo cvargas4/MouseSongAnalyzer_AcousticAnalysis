@@ -297,10 +297,22 @@ for ident in range(len(nbUSV)): #for each of the separate recordings
                 elif firstCall[firstSyl] == 'M': #if char = M
                     m = m + 1 #add 1 to num of starting M in that recording
                     t = t + 1
-    listS.append(s/t*100) #add percentage of starting s for that recording to the list of s%
-    listD.append(d/t*100) #add percentage of starting d for that recording to the list of d%
-    listU.append(u/t*100) #add percentage of starting u for that recording to the list of u%
-    listM.append(m/t*100) #add percentage of starting M for that recording to the list of M%
+    if s > 0:
+        listS.append(s/t*100) #add percentage of starting s for that recording to the list of s%
+    elif s == 0:
+       listS.append(0)
+    if d > 0:
+       listD.append(d/t*100) #add percentage of starting d for that recording to the list of d%
+    elif d == 0:
+       listD.append(0)
+    if u > 0:
+       listU.append(u/t*100) #add percentage of starting u for that recording to the list of u%
+    elif u == 0:
+       listU.append(0)
+    if m > 0:   
+        listM.append(m/t*100) #add percentage of starting M for that recording to the list of M%
+    elif m == 0:
+       listM.append(0)
 
 #repertoire composition (%)
 #all types/categories of USVs for a mouse
@@ -376,8 +388,10 @@ for x in range(len(nbUSV)): #for each of the separate recordings
             if y != ' ' and y > 1: #if y is not ' ' aka it is a number
                 lenT = lenT + y #add that length to the total of the length
                 numSeq = numSeq + 1 #add 1 to the number of sequences in that recording
-    seqLen.append(lenT/numSeq) #divide the total length by the number of sequences in the recording, add that to the list
-            
+    if numSeq>0:
+        seqLen.append(lenT/numSeq) #divide the total length by the number of sequences in the recording, add that to the list
+    elif numSeq==0:
+         seqLen.append(0)
 
 #fq Mean
 #mean of fq means per recording
@@ -574,7 +588,10 @@ for ident in range(len(nbUSV)):
                     numOK = numOK + 1 #add 1 to total num of seq ok
                 else:
                     numS = numS + 1 #else add 1 to non seq ok numbers because it is the end of a seq but not seq ok
-    csRatio.append(numOK/numS) #ratio = total seq ok/ total non seq ok in a recording?
+    if numS > 0:
+        csRatio.append(numOK/numS) #ratio = total seq ok/ total non seq ok in a recording?
+    elif numS == 0:
+        csRatio.append(0)
 
 #s,d,u,m data below
 
@@ -775,49 +792,96 @@ for ident in range(len(nbUSV)):
                 mPurityT = mPurityT + spectralPurity[y]
                 mDurT = mDurT + duration[y]
                 mCounter = mCounter + 1
-    sfqMin.append(sfqMinT/sCounter)
-    sfqMean.append(sfqMeanT/sCounter)
-    sfqMax.append(sfqMaxT/sCounter)
-    sfqStart.append(sfqStartT/sCounter) 
-    sfqEnd.append(sfqEndT/sCounter) 
-    sBw.append(sBwT/sCounter)
-    sAmp.append(sAmpT/sCounter)
-    sfqVar.append(sfqVarT/sCounter)
-    sPurity.append(sPurityT/sCounter)
-    sDur.append(sDurT/sCounter)
+    if sCounter > 0:
+        sfqMin.append(sfqMinT/sCounter)
+        sfqMean.append(sfqMeanT/sCounter)
+        sfqMax.append(sfqMaxT/sCounter)
+        sfqStart.append(sfqStartT/sCounter) 
+        sfqEnd.append(sfqEndT/sCounter) 
+        sBw.append(sBwT/sCounter)
+        sAmp.append(sAmpT/sCounter)
+        sfqVar.append(sfqVarT/sCounter)
+        sPurity.append(sPurityT/sCounter)
+        sDur.append(sDurT/sCounter)
+    elif sCounter == 0:
+        sfqMin.append(np.nan)
+        sfqMean.append(np.nan)
+        sfqMax.append(np.nan)
+        sfqStart.append(np.nan) 
+        sfqEnd.append(np.nan) 
+        sBw.append(np.nan)
+        sAmp.append(np.nan)
+        sfqVar.append(np.nan)
+        sPurity.append(np.nan)
+        sDur.append(np.nan)
+    if dCounter > 0:
+        dfqMin.append(dfqMinT/dCounter)
+        dfqMean.append(dfqMeanT/dCounter)
+        dfqMax.append(dfqMaxT/dCounter)
+        dfqStart.append(dfqStartT/dCounter) 
+        dfqEnd.append(dfqEndT/dCounter) 
+        dBw.append(dBwT/dCounter)
+        dAmp.append(dAmpT/dCounter)
+        dfqVar.append(dfqVarT/dCounter)
+        dPurity.append(dPurityT/dCounter)
+        dDur.append(dDurT/dCounter)
+    elif dCounter == 0:
+        dfqMin.append(np.nan)
+        dfqMean.append(np.nan)
+        dfqMax.append(np.nan)
+        dfqStart.append(np.nan) 
+        dfqEnd.append(np.nan) 
+        dBw.append(np.nan)
+        dAmp.append(np.nan)
+        dfqVar.append(np.nan)
+        dPurity.append(np.nan)
+        dDur.append(np.nan)
     
-    dfqMin.append(dfqMinT/dCounter)
-    dfqMean.append(dfqMeanT/dCounter)
-    dfqMax.append(dfqMaxT/dCounter)
-    dfqStart.append(dfqStartT/dCounter) 
-    dfqEnd.append(dfqEndT/dCounter) 
-    dBw.append(dBwT/dCounter)
-    dAmp.append(dAmpT/dCounter)
-    dfqVar.append(dfqVarT/dCounter)
-    dPurity.append(dPurityT/dCounter)
-    dDur.append(dDurT/dCounter)
+    if uCounter > 0:
+        ufqMin.append(ufqMinT/uCounter)
+        ufqMean.append(ufqMeanT/uCounter)
+        ufqMax.append(ufqMaxT/uCounter)
+        ufqStart.append(ufqStartT/uCounter) 
+        ufqEnd.append(ufqEndT/uCounter) 
+        uBw.append(uBwT/uCounter)
+        uAmp.append(uAmpT/uCounter)
+        ufqVar.append(ufqVarT/uCounter)
+        uPurity.append(uPurityT/uCounter)
+        uDur.append(uDurT/uCounter)
+    elif uCounter == 0:
+        ufqMin.append(np.nan)
+        ufqMean.append(np.nan)
+        ufqMax.append(np.nan)
+        ufqStart.append(np.nan) 
+        ufqEnd.append(np.nan) 
+        uBw.append(np.nan)
+        uAmp.append(np.nan)
+        ufqVar.append(np.nan)
+        uPurity.append(np.nan)
+        uDur.append(np.nan)
     
-    ufqMin.append(ufqMinT/uCounter)
-    ufqMean.append(ufqMeanT/uCounter)
-    ufqMax.append(ufqMaxT/uCounter)
-    ufqStart.append(ufqStartT/uCounter) 
-    ufqEnd.append(ufqEndT/uCounter) 
-    uBw.append(uBwT/uCounter)
-    uAmp.append(uAmpT/uCounter)
-    ufqVar.append(ufqVarT/uCounter)
-    uPurity.append(uPurityT/uCounter)
-    uDur.append(uDurT/uCounter)
-    
-    mfqMin.append(mfqMinT/mCounter)
-    mfqMean.append(mfqMeanT/mCounter)
-    mfqMax.append(mfqMaxT/mCounter)
-    mfqStart.append(mfqStartT/mCounter) 
-    mfqEnd.append(mfqEndT/mCounter) 
-    mBw.append(mBwT/mCounter)
-    mAmp.append(mAmpT/mCounter)
-    mfqVar.append(mfqVarT/mCounter)
-    mPurity.append(mPurityT/mCounter)
-    mDur.append(mDurT/mCounter)
+    if mCounter > 0:
+        mfqMin.append(mfqMinT/mCounter)
+        mfqMean.append(mfqMeanT/mCounter)
+        mfqMax.append(mfqMaxT/mCounter)
+        mfqStart.append(mfqStartT/mCounter) 
+        mfqEnd.append(mfqEndT/mCounter) 
+        mBw.append(mBwT/mCounter)
+        mAmp.append(mAmpT/mCounter)
+        mfqVar.append(mfqVarT/mCounter)
+        mPurity.append(mPurityT/mCounter)
+        mDur.append(mDurT/mCounter)
+    elif mCounter == 0:
+        mfqMin.append(np.nan)
+        mfqMean.append(np.nan)
+        mfqMax.append(np.nan)
+        mfqStart.append(np.nan) 
+        mfqEnd.append(np.nan) 
+        mBw.append(np.nan)
+        mAmp.append(np.nan)
+        mfqVar.append(np.nan)
+        mPurity.append(np.nan)
+        mDur.append(np.nan)
 
 sAvgs = [sfqMin, sfqMean, sfqMax, sfqStart, sfqEnd, sBw, sAmp, sfqVar, sPurity, sDur]
 dAvgs = [dfqMin, dfqMean, dfqMax, dfqStart, dfqEnd, dBw, dAmp, dfqVar, dPurity, dDur]
@@ -1035,99 +1099,99 @@ for ident in range(len(nbUSV)):
                 tot = tot + 1
         print('%s: %s USVs'%(batchNew[ident],nbUSV[ident]))
         
-    if ss != 0:
+    if ss > 0:
         overallProbSs.append(ss/tot)
     elif ss == 0:
         overallProbSs.append(0)
-    if sd != 0:
+    if sd > 0:
         overallProbSd.append(sd/tot)
     elif sd == 0:
         overallProbSd.append(0)
-    if su != 0:
+    if su > 0:
         overallProbSu.append(su/tot)
     elif su == 0:
         overallProbSu.append(0)
-    if sm != 0:
+    if sm > 0:
         overallProbSm.append(sm/tot)
     elif sm == 0:
         overallProbSm.append(0)
-    if sx != 0:
+    if sx > 0:
         overallProbSx.append(sx/tot)
     elif sx == 0:
         overallProbSx.append(0)
-    if ds != 0:
+    if ds > 0:
         overallProbDs.append(ds/tot)
     elif ds == 0:
         overallProbDs.append(0)
-    if dd != 0:
+    if dd > 0:
         overallProbDd.append(dd/tot)
     elif dd == 0:
         overallProbDd.append(0)
-    if du != 0:
+    if du > 0:
         overallProbDu.append(du/tot)
     elif du == 0:
         overallProbDu.append(0)
-    if dm != 0:
+    if dm > 0:
         overallProbDm.append(dm/tot)
     elif dm == 0:
         overallProbDm.append(0)
-    if dx != 0:
+    if dx > 0:
         overallProbDx.append(dx/tot)
-    elif dm == 0:
+    elif dx == 0:
         overallProbDx.append(0)
-    if us != 0:
+    if us > 0:
         overallProbUs.append(us/tot)
     elif us == 0:
         overallProbUs.append(0)
-    if ud != 0:
+    if ud > 0:
         overallProbUd.append(ud/tot)
     elif ud == 0:
         overallProbUd.append(0)
-    if uu != 0:
+    if uu > 0:
         overallProbUu.append(uu/tot)
     elif uu == 0:
         overallProbUu.append(0)
-    if um != 0:
+    if um > 0:
         overallProbUm.append(um/tot)
     elif um == 0:
         overallProbUm.append(0)
-    if ux != 0:
+    if ux > 0:
         overallProbUx.append(ux/tot)
     elif ux == 0:
         overallProbUx.append(0)
-    if ms != 0:
+    if ms > 0:
         overallProbMs.append(ms/tot)
     elif ms == 0:
         overallProbMs.append(0)
-    if md != 0:
+    if md > 0:
         overallProbMd.append(md/tot)
     elif md == 0:
         overallProbMd.append(0)
-    if mu != 0:
+    if mu > 0:
         overallProbMu.append(mu/tot)
     elif mu == 0:
         overallProbMu.append(0)
-    if mm != 0:
+    if mm > 0:
         overallProbMm.append(mm/tot)
     elif mm == 0:
         overallProbMm.append(0)
-    if mx != 0:
+    if mx > 0:
         overallProbMx.append(mx/tot)
     elif mx == 0:
         overallProbMx.append(0)
-    if xs != 0:
+    if xs > 0:
         overallProbXs.append(xs/tot)
     elif xs == 0:
         overallProbXs.append(0)
-    if xd != 0:
+    if xd > 0:
         overallProbXd.append(xd/tot)
     elif xd == 0:
         overallProbXd.append(0)
-    if xu != 0:
+    if xu > 0:
         overallProbXu.append(xu/tot)
     elif xu == 0:
         overallProbXu.append(0)
-    if xm != 0:
+    if xm > 0:
         overallProbXm.append(xm/tot)
     elif xm == 0:
         overallProbXm.append(0)
