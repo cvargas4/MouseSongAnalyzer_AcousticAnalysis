@@ -904,7 +904,7 @@ for x in range(len(batchNew)):
 
 featureNames = ['ID', 'Number of USVs', 'Call Rate', \
                 'percent starting s', 'percent starting d', 'percent starting u', 'percent starting m', \
-                'percent composition s', 'percent composition u', 'percent composition d', 'percent composition m', \
+                'percent composition s', 'percent composition d', 'percent composition u', 'percent composition m', \
                 'sequence Length', 'Fq Mean', 'Bandwidth Mean', 'Amplitude Mean', 'Duraiton Mean',\
                     'Fq Variance Mean', 'Spectral Purity Mean', 'Complex to Simple Ratio', \
                 'sfqMin', 'sfqMean', 'sfqMax', 'sfqStart', 'sfqEnd', 'sBw', 'sAmp', 'sfqVar', 'sPurity', 'sDur', \
